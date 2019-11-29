@@ -9,6 +9,15 @@ type TaskSetSequence struct {
 	currentTask int
 }
 
+// NewWeighingTaskSet returns a new WeighingTaskSet.
+func NewTaskSetSequence() *TaskSetSequence {
+	return &TaskSetSequence{
+		totalTask: 1,
+		currentTask: 0,
+		tasks:  make([]*Task, 0),
+	}
+}
+
 func (ts TaskSetSequence) AddTask(task *Task) {
 	ts.lock.Lock()
 	ts.totalTask++
