@@ -18,7 +18,7 @@ func NewTaskSetSequence() *TaskSetSequence {
 	}
 }
 
-func (ts TaskSetSequence) AddTask(task *Task) {
+func (ts *TaskSetSequence) AddTask(task *Task) {
 	ts.lock.Lock()
 	ts.totalTask++
 	ts.tasks = append(ts.tasks, task)
@@ -40,7 +40,7 @@ func (ts *TaskSetSequence) GetWeight() (weight int) {
 	return 0
 }
 
-func (ts TaskSetSequence) Run() {
+func (ts *TaskSetSequence) Run() {
 	task := ts.GetTask()
 	task.Fn()
 }
