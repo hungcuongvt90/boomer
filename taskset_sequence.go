@@ -1,6 +1,8 @@
 package boomer
 
-import "sync"
+import (
+	"sync"
+)
 
 type TaskSetSequence struct {
 	tasks       []*Task
@@ -20,8 +22,10 @@ func NewTaskSetSequence() *TaskSetSequence {
 
 func (ts *TaskSetSequence) AddTask(task *Task) {
 	ts.lock.Lock()
-	ts.totalTask++
-	ts.tasks = append(ts.tasks, task)
+	for i := 1; i <= task.Weight; i++ {
+		ts.totalTask++
+		ts.tasks = append(ts.tasks, task)
+	}
 	ts.lock.Unlock()
 }
 
