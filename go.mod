@@ -1,4 +1,4 @@
-module hungcuongvt90/boomer
+module github.com/hungcuongvt90/boomer
 
 go 1.13
 
